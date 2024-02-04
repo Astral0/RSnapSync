@@ -16,7 +16,7 @@ cron (or another scheduler) for automated backups
 Clone the repository or download the script directly:
 
 ```
-git clone https://github.com/yourusername/RSnapSync.git
+git clone https://github.com/Astral0/RSnapSync.git
 cd RSnapSync
 ```
 
@@ -29,10 +29,10 @@ chmod +x rsnap_sync.sh
 Create and modify a configuration file based on your backup requirements. Start by copying the data0.conf.template file:
 
 ```
-cp data0.conf.template data0.conf
+cp data.conf.template data.conf
 ```
 
-Edit data0.conf to suit your needs:
+Edit data.conf to suit your needs:
 
 ```
 # Number of backups to keep for each type
@@ -41,15 +41,16 @@ MAX_BACKUPS_WEEKLY=4
 MAX_BACKUPS_MONTHLY=6
 
 # Directory where backups will be stored
-BACKUP_DIR="/volume1/BACKUP/data0"
+BACKUP_DIR="/path/to/backup_directory"
 
 # Remote host (user@hostname) for pulling data, leave empty for local backups
-REMOTE_HOST="service_backup@data0"
+REMOTE_HOST="user@remote_ip"
 
 # Directories to backup
 declare -a DIRECTORIES=(
-    "/raid/PROJETS2"
-    "/raid/DEVELOPMENT"
+    "/path/to/first_directory"
+    "/path/to/second_directory"
+    # Add more directories as needed
 )
 ```
 
@@ -57,9 +58,9 @@ declare -a DIRECTORIES=(
 Run the script with the desired interval (daily, weekly, monthly) and your configuration file:
 
 ```
-./rsnap_sync.sh data0.conf daily
-./rsnap_sync.sh data0.conf weekly
-./rsnap_sync.sh data0.conf monthly
+./rsnap_sync.sh data.conf daily
+./rsnap_sync.sh data.conf weekly
+./rsnap_sync.sh data.conf monthly
 ```
 
 ## Automating Backups with Cron
@@ -67,13 +68,13 @@ Automate your backup process by scheduling the script with cron. Use crontab -e 
 
 ```
 # Daily backup at 1:00 AM
-0 1 * * * /path/to/rsnap_sync.sh /path/to/data0.conf daily
+0 1 * * * /path/to/rsnap_sync.sh /path/to/data.conf daily
 
 # Weekly backup at 2:00 AM on Sundays
-0 2 * * 0 /path/to/rsnap_sync.sh /path/to/data0.conf weekly
+0 2 * * 0 /path/to/rsnap_sync.sh /path/to/data.conf weekly
 
 # Monthly backup at 3:00 AM on the first day of each month
-0 3 1 * * /path/to/rsnap_sync.sh /path/to/data0.conf monthly
+0 3 1 * * /path/to/rsnap_sync.sh /path/to/data.conf monthly
 ```
 
 ## License
