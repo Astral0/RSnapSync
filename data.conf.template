@@ -1,0 +1,28 @@
+# Configuration for RSnapSync
+# This file should be named something like 'data0.conf'
+
+# Number of backups to retain for each type
+MAX_BACKUPS_DAILY=5
+MAX_BACKUPS_WEEKLY=4
+MAX_BACKUPS_MONTHLY=6
+
+# Directory where backups will be stored
+# Ensure this directory exists and is writable
+BACKUP_DIR="/path/to/backup_directory"
+
+# Remote host from which to pull data
+# Format: user@hostname
+# Leave blank for local backups, e.g., REMOTE_HOST=""
+REMOTE_HOST="user@remote_ip"
+
+# Directories to back up
+# List each directory in a new line within the parentheses
+declare -a DIRECTORIES=(
+    "/path/to/first_directory"
+    "/path/to/second_directory"
+    # Add more directories as needed
+    # You can comment out any line to exclude it from the backup
+)
+
+# End of configuration file
+
