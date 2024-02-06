@@ -140,5 +140,3 @@ log "Sauvegarde terminée."
 # Supprimer le fichier de verrouillage à la fin
 rm -f "$LOCKFILE"
 
-
-
